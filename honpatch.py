@@ -26,8 +26,15 @@ except:
     from httplib        import HTTPConnection
     from Queue          import Queue
 from multiprocessing import Value
-import io,struct,os
+import struct,os
 import zipfile,shutil
+try:
+    import io
+except:
+    class io:
+        @staticmethod
+        def open(*args, **kwargs):
+            return open(*args, **kwargs)
 
 USER_AGENT = "S2 Games/Heroes of Newerth/2.0.29.1/lac/x86-biarch"
 
